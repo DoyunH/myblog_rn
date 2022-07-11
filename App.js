@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -12,13 +12,15 @@ import {
 } from 'react-native';
 
 const App = () => {
+  const [inputText, setInputText] = useState('');
+
   return (
     <SafeAreaView>
       <StatusBar />
       <View style={styles.sectionContainer}>
         <Text style={styles.highlight}>Code for Beginners</Text>
         <View style={styles.flexRowContainer}>
-          <TextInput style={styles.input} value="its a text input" />
+          <TextInput style={styles.input} onChangeText={setInputText} />
           <Button title="Post" style={styles.postButton} />
         </View>
       </View>
@@ -37,6 +39,9 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     justifyContent: 'center',
     marginTop: 10,
+
+    borderColor: '#ccc',
+    borderWidth: 1,
   },
   sectionTitle: {
     fontSize: 24,
@@ -48,8 +53,6 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
   input: {
-    borderColor: 'gray',
-    borderWidth: 1,
     flex: 1,
     paddingVertical: 10,
     paddingHorizontal: 50,

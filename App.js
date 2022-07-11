@@ -13,15 +13,26 @@ import {
 
 const App = () => {
   const [inputText, setInputText] = useState('');
+  const [postList, setPostList] = useState([]);
 
+  const addPost = () => {
+    setPostList([...postList, inputText]);
+    setInputText('');
+  };
+
+  console.log(postList);
   return (
     <SafeAreaView>
       <StatusBar />
       <View style={styles.sectionContainer}>
         <Text style={styles.highlight}>Code for Beginners</Text>
         <View style={styles.flexRowContainer}>
-          <TextInput style={styles.input} onChangeText={setInputText} />
-          <Button title="Post" style={styles.postButton} />
+          <TextInput
+            style={styles.input}
+            value={inputText}
+            onChangeText={setInputText}
+          />
+          <Button title="Post" style={styles.postButton} onPress={addPost} />
         </View>
       </View>
     </SafeAreaView>
@@ -36,12 +47,12 @@ const styles = StyleSheet.create({
   },
   flexRowContainer: {
     flexDirection: 'row',
-    alignItems: 'stretch',
+    alignItems: 'center',
     justifyContent: 'center',
     marginTop: 10,
-
-    borderColor: '#ccc',
-    borderWidth: 1,
+    marginHorizontal: 10,
+    borderBottomColor: '#ccc',
+    borderBottomWidth: 1,
   },
   sectionTitle: {
     fontSize: 24,
@@ -60,7 +71,7 @@ const styles = StyleSheet.create({
   },
   postButton: {
     flex: 1,
-    marginLeft: 10,
+    marginRight: 10,
     borderColor: 'gray',
     borderWidth: 1,
   },

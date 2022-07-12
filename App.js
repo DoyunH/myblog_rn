@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {
   SafeAreaView,
-  ScrollView,
+  FlatList,
   StatusBar,
   StyleSheet,
   Text,
@@ -15,7 +15,10 @@ const App = () => {
   const [postList, setPostList] = useState([]);
 
   const addPost = () => {
-    setPostList([...postList, inputText]);
+    setPostList([
+      ...postList,
+      {title: inputText, id: Math.random().toString()},
+    ]);
     setInputText('');
   };
 
@@ -34,13 +37,17 @@ const App = () => {
           <Button title="Post" style={styles.postButton} onPress={addPost} />
         </View>
       </View>
-      <ScrollView contentContainerStyle={styles.postListContainer}>
-        {postList.map((post, index) => (
-          <Text style={styles.postElement} key={index}>
-            {post}
-          </Text>
-        ))}
-      </ScrollView>
+      <FlatList
+        data={postList}
+        renderItem={post => {
+          return (
+            <View style={styles.postListContainer}>
+              <Text style={styles.postElement}>{post.item.title}</Text>
+            </View>
+          );
+        }}
+        keyExtractor={item => item.id}
+      />
     </SafeAreaView>
   );
 };

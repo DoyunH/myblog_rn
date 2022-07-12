@@ -7,7 +7,6 @@ import {
   Text,
   TextInput,
   Button,
-  useColorScheme,
   View,
 } from 'react-native';
 
@@ -35,6 +34,13 @@ const App = () => {
           <Button title="Post" style={styles.postButton} onPress={addPost} />
         </View>
       </View>
+      <ScrollView contentContainerStyle={styles.postListContainer}>
+        {postList.map((post, index) => (
+          <Text style={styles.postElement} key={index}>
+            {post}
+          </Text>
+        ))}
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -77,6 +83,21 @@ const styles = StyleSheet.create({
   },
   highlight: {
     fontWeight: '700',
+  },
+  postListContainer: {
+    alignItems: 'center',
+    marginTop: 10,
+    marginHorizontal: 10,
+  },
+  postElement: {
+    marginTop: 10,
+    marginHorizontal: 10,
+    backgroundColor: 'blue',
+    color: 'white',
+    paddingVertical: 10,
+    width: '100%',
+    textAlign: 'center',
+    borderRadius: 10,
   },
 });
 

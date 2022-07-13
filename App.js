@@ -45,7 +45,7 @@ const App = () => {
         data={postList}
         renderItem={post => {
           return (
-            <Pressable style={styles.postListContainer}>
+            <Pressable style={styles.postListContainer} onPress={() => deletePost(post.item.id)}>
               <Text style={styles.postElement}>{post.item.title}</Text>
             </Pressable>
           );

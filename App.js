@@ -22,6 +22,10 @@ const App = () => {
     setInputText('');
   };
 
+  const deletePost = (id) => {
+    setPostList(postList.filter((post) => post.id !== id));
+  };
+
   console.log(postList);
   return (
     <SafeAreaView>
@@ -93,13 +97,12 @@ const styles = StyleSheet.create({
   },
   postListContainer: {
     alignItems: 'center',
-    marginTop: 10,
     marginHorizontal: 10,
   },
   postElement: {
     marginTop: 10,
     marginHorizontal: 10,
-    backgroundColor: 'blue',
+    backgroundColor: '#90caf9',
     color: 'white',
     paddingVertical: 10,
     width: '100%',

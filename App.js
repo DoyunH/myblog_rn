@@ -10,6 +10,8 @@ import {
   View,
   Pressable,
 } from 'react-native';
+import PostInput from './components/PostInput';
+import Title from './components/Title';
 
 const App = () => {
   const [inputText, setInputText] = useState('');
@@ -30,17 +32,8 @@ const App = () => {
   return (
     <SafeAreaView>
       <StatusBar />
-      <View style={styles.sectionContainer}>
-        <Text style={styles.highlight}>Code for Beginners</Text>
-        <View style={styles.flexRowContainer}>
-          <TextInput
-            style={styles.input}
-            value={inputText}
-            onChangeText={setInputText}
-          />
-          <Button title="Post" style={styles.postButton} onPress={addPost} />
-        </View>
-      </View>
+      <Title/>      
+      <PostInput inputText={inputText} setInputText={setInputText} addPost={addPost} />
       <FlatList
         data={postList}
         renderItem={post => {
@@ -57,7 +50,7 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
-  sectionContainer: {
+  containerCentered: {
     marginTop: 32,
     justifyContent: 'center',
     alignItems: 'center',
@@ -79,18 +72,6 @@ const styles = StyleSheet.create({
     marginTop: 8,
     fontSize: 18,
     fontWeight: '400',
-  },
-  input: {
-    flex: 1,
-    paddingVertical: 10,
-    paddingHorizontal: 50,
-    textAlign: 'center',
-  },
-  postButton: {
-    flex: 1,
-    marginRight: 10,
-    borderColor: 'gray',
-    borderWidth: 1,
   },
   highlight: {
     fontWeight: '700',

@@ -8,6 +8,7 @@ import {
   TextInput,
   Button,
   View,
+  Pressable,
 } from 'react-native';
 
 const App = () => {
@@ -26,7 +27,6 @@ const App = () => {
     setPostList(postList.filter((post) => post.id !== id));
   };
 
-  console.log(postList);
   return (
     <SafeAreaView>
       <StatusBar />
@@ -45,9 +45,9 @@ const App = () => {
         data={postList}
         renderItem={post => {
           return (
-            <View style={styles.postListContainer}>
+            <Pressable style={styles.postListContainer}>
               <Text style={styles.postElement}>{post.item.title}</Text>
-            </View>
+            </Pressable>
           );
         }}
         keyExtractor={item => item.id}

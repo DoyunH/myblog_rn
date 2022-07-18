@@ -6,6 +6,7 @@ import {
 import PostInput from './components/PostInput';
 import PostList from './components/PostList';
 import Title from './components/Title';
+import CategoriesScreen from './screens/CategoriesScreen';
 
 const App = () => {
   const [inputText, setInputText] = useState('');
@@ -26,9 +27,10 @@ const App = () => {
   return (
     <SafeAreaView>
       <StatusBar />
-      <Title/>      
+      <CategoriesScreen />
+      {/* <Title/>      
       <PostInput inputText={inputText} setInputText={setInputText} addPost={addPost} />
-      <PostList postList={postList} deletePost={deletePost}/>
+      <PostList postList={postList} deletePost={deletePost}/> */}
     </SafeAreaView>
   );
 };

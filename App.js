@@ -5,29 +5,11 @@ import {
 } from 'react-native';
 import { NavigationContainer} from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import PostInput from './components/PostInput';
-import PostList from './components/PostList';
-import Title from './components/Title';
 import CategoriesScreen from './screens/CategoriesScreen';
 import PostTodoScreen from './screens/PostTodoScreen';
 
 const App = () => {
-  const [inputText, setInputText] = useState('');
-  const [postList, setPostList] = useState([]);
-
   const Stack = createNativeStackNavigator();
-
-  const addPost = () => {
-    setPostList([
-      ...postList,
-      {title: inputText, id: Math.random().toString()},
-    ]);
-    setInputText('');
-  };
-
-  const deletePost = (id) => {
-    setPostList(postList.filter((post) => post.id !== id));
-  };
 
   return (
     <>
@@ -38,9 +20,7 @@ const App = () => {
           <Stack.Screen name="Post Todo" component={PostTodoScreen} />
         </Stack.Navigator>
       </NavigationContainer>
-      {/* <Title/>      
-      <PostInput inputText={inputText} setInputText={setInputText} addPost={addPost} />
-      <PostList postList={postList} deletePost={deletePost}/> */}
+      
     </>
   );
 };

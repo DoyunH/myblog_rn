@@ -9,6 +9,7 @@ import PostInput from './components/PostInput';
 import PostList from './components/PostList';
 import Title from './components/Title';
 import CategoriesScreen from './screens/CategoriesScreen';
+import PostTodoScreen from './screens/PostTodoScreen';
 
 const App = () => {
   const [inputText, setInputText] = useState('');
@@ -34,6 +35,7 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Projects" component={CategoriesScreen} />
+          <Stack.Screen name="Post Todo" component={PostTodoScreen} />
         </Stack.Navigator>
       </NavigationContainer>
       {/* <Title/>      

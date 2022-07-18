@@ -3,6 +3,7 @@ import {
   SafeAreaView,
   StatusBar,
 } from 'react-native';
+import { NavigationContainer} from '@react-navigation/native'
 import PostInput from './components/PostInput';
 import PostList from './components/PostList';
 import Title from './components/Title';
@@ -27,7 +28,9 @@ const App = () => {
   return (
     <SafeAreaView>
       <StatusBar />
-      <CategoriesScreen />
+      <NavigationContainer>
+        <CategoriesScreen />
+      </NavigationContainer>
       {/* <Title/>      
       <PostInput inputText={inputText} setInputText={setInputText} addPost={addPost} />
       <PostList postList={postList} deletePost={deletePost}/> */}

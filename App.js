@@ -4,6 +4,7 @@ import {
   StatusBar,
 } from 'react-native';
 import { NavigationContainer} from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import PostInput from './components/PostInput';
 import PostList from './components/PostList';
 import Title from './components/Title';
@@ -12,6 +13,8 @@ import CategoriesScreen from './screens/CategoriesScreen';
 const App = () => {
   const [inputText, setInputText] = useState('');
   const [postList, setPostList] = useState([]);
+
+  const Stack = createNativeStackNavigator();
 
   const addPost = () => {
     setPostList([
@@ -26,15 +29,17 @@ const App = () => {
   };
 
   return (
-    <SafeAreaView>
+    <>
       <StatusBar />
       <NavigationContainer>
-        <CategoriesScreen />
+        <Stack.Navigator>
+          <Stack.Screen name="Projects" component={CategoriesScreen} />
+        </Stack.Navigator>
       </NavigationContainer>
       {/* <Title/>      
       <PostInput inputText={inputText} setInputText={setInputText} addPost={addPost} />
       <PostList postList={postList} deletePost={deletePost}/> */}
-    </SafeAreaView>
+    </>
   );
 };
 
